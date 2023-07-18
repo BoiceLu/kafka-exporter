@@ -1,0 +1,26 @@
+resources:
+  limits:
+    cpu: 500m
+    memory: 2Gi
+
+  requests:
+    cpu: 500m
+    memory: 2Gi
+
+logRetentionBytes: _104857600
+
+logSegmentBytes: _1048576
+
+externalAccess:
+  enabled: true
+  service:
+    ports:
+      external: 19092
+    loadBalancerIPs:
+      - 104.199.140.221
+
+replicaCount: 1
+defaultReplicationFactor: 1
+offsetsTopicReplicationFactor: 1
+transactionStateLogReplicationFactor: 1
+transactionStateLogMinIsr: 1

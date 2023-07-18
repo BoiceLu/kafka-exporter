@@ -1,0 +1,16 @@
+helm install test-kafka -f Helm/Values/Kafka/values-boice-provider.yaml Helm/Charts/kafka
+helm install prometheus-kafka-exporter -n monitoring -f Helm/Values/Kafka-exporter/values.yaml Helm/Charts/prometheus-kafka-exporter/
+
+prometheus-kafka-exporter:http://localhost:9308/metrics
+
+kubectl create namespace monitoring
+kubectl delete namespace monitoring
+
+helm uninstall test-kafka
+helm uninstall prometheus-kafka-exporter -n monitoring
+
+kafka-console-consumer.sh --bootstrap-server 104.199.140.221:19092 --topic Galaxy_666TRAIN02_BlackJack-2-Infinite
+
+---
+https://github.com/GoogleCloudPlatform/k8s-stackdriver/blob/master/prometheus-to-sd/kubernetes/prometheus-to-sd-kube-state-metrics.yaml
+https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-kafka-exporter
