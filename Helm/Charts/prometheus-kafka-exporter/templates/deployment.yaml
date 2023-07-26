@@ -112,7 +112,9 @@ spec:
           command:
             - /monitor
             - --stackdriver-prefix=custom.googleapis.com
-            - --source=prometheus-kafka-exporter:http://localhost:9308/metrics
+            - --source=prometheus-kafka-exporter:http://localhost:9308/metrics?whitelisted=kafka_consumergroup_current_offset,kafka_consumergroup_lag,kafka_topic_partitions,kafka_topic_partition_current_offset,kafka_broker_info,kafka_brokers,kafka_topic_partitions,kafka_consumergroup_members
+            - --export-interval=30s
+            - --scrape-interval=30s
             - --pod-id=$(POD_NAME)
             - --namespace-id=$(POD_NAMESPACE)
           env:

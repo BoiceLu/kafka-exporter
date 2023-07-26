@@ -1,10 +1,10 @@
 resources:
   limits:
-    cpu: 500m
+    cpu: 300m
     memory: 2Gi
 
   requests:
-    cpu: 500m
+    cpu: 300m
     memory: 2Gi
 
 logRetentionBytes: _104857600

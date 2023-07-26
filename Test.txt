@@ -9,8 +9,12 @@ kubectl delete namespace monitoring
 helm uninstall test-kafka
 helm uninstall prometheus-kafka-exporter -n monitoring
 
-kafka-console-consumer.sh --bootstrap-server 104.199.140.221:19092 --topic Galaxy_666TRAIN02_BlackJack-2-Infinite
+kafka-console-consumer.sh --bootstrap-server 104.199.140.221:19092 --topic Galaxy_666TRAIN02_BlackJack-2-Infinite --group myexportertest
 
 ---
 https://github.com/GoogleCloudPlatform/k8s-stackdriver/blob/master/prometheus-to-sd/kubernetes/prometheus-to-sd-kube-state-metrics.yaml
 https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-kafka-exporter
+---
+prometheus-kafka-exporter:http://localhost:9308/metrics?whitelisted=kafka_consumergroup_current_offset,kafka_consumergroup_lag,kafka_topic_partitions,kafka_topic_partition_current_offset,kafka_broker_info
+---
+kubectl exec -it test-kafka-client -- bash
