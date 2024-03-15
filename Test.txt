@@ -7,7 +7,7 @@ kubectl create namespace monitoring
 kubectl delete namespace monitoring
 
 helm uninstall test-kafka
-helm uninstall prometheus-kafka-exporter -n monitoring
+helm uninstall kafka-exporter -n monitoring
 
 kafka-console-consumer.sh --bootstrap-server 104.199.140.221:19092 --topic Galaxy_666TRAIN02_BlackJack-2-Infinite --group myexportertest
 
